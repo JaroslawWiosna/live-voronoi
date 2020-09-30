@@ -1,7 +1,6 @@
 #include <SDL.h>
 
-const float SCREEN_WIDTH = 1920.0f;
-const float SCREEN_HEIGHT = 1080.0f;
+#include "50_constants.hpp"
 
 int main(int argc, char* argv[]) {
     SDL_Window* window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
