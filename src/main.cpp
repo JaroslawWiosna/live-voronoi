@@ -1,5 +1,6 @@
 #include <SDL.h>
 
+#include "30_string_view.cpp"
 #include "50_constants.hpp"
 #include "87_world.cpp"
 
@@ -31,7 +32,7 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-        world.update(0.5f);
+        world.update(UPDATE_TIME);
         world.render(renderer);
         SDL_RenderPresent(renderer);
     }
