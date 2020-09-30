@@ -1,8 +1,10 @@
 #include <SDL.h>
 
 #include "50_constants.hpp"
+#include "87_world.cpp"
 
 int main(int argc, char* argv[]) {
+    World world{};
     SDL_Window* window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
                                           SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 
@@ -29,5 +31,9 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
+        world.update(0.5f);
+        world.render(renderer);
+        SDL_RenderPresent(renderer);
     }
+    SDL_Quit();
 }
