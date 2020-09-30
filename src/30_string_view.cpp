@@ -8,6 +8,6 @@ constexpr StringView operator""_sv(const char *cstr, size_t len) {
 
 // TODO(#1): Make operator== constexpr is possible
 bool operator==(StringView lhs, StringView rhs) {
-    assert(!"TODO: Implement operator== for StringView");
+    assert(!"TODO(#2): Implement operator== for StringView");
     return {};
 }
