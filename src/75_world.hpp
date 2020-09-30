@@ -4,5 +4,5 @@
 // method
 struct World {
     void update(float dt);
-    void render(SDL_Renderer* renderer);
+    void render(SDL_Renderer *renderer);
 };

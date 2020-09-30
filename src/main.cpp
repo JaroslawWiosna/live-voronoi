@@ -3,12 +3,12 @@
 #include "50_constants.hpp"
 #include "87_world.cpp"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     World world{};
-    SDL_Window* window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
+    SDL_Window *window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
                                           SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(
+    SDL_Renderer *renderer = SDL_CreateRenderer(
         window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 

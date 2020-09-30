@@ -4,6 +4,6 @@ void World::update(float dt) {
     return;
 }
 
-void World::render(SDL_Renderer* renderer) {
+void World::render(SDL_Renderer *renderer) {
     return;
 }
