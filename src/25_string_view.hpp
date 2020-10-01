@@ -9,6 +9,8 @@ struct StringView {
     const char *str;
 
     constexpr bool empty() const;
+    constexpr StringView remove_prefix(size_t n);
+    constexpr StringView remove_suffix(size_t n);
 };
 
 constexpr StringView operator""_sv(const char *cstr, size_t len) {

@@ -3,8 +3,10 @@
 #include "30_string_view.cpp"
 #include "50_constants.hpp"
 #include "87_world.cpp"
+#include "98_test.cpp"
 
 int main(int argc, char *argv[]) {
+    test();
     World world{};
     SDL_Window *window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
                                           SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
