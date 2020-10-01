@@ -6,6 +6,10 @@ constexpr StringView operator""_sv(const char *cstr, size_t len) {
     return {len, cstr};
 }
 
+constexpr bool empty() const {
+    return (0 == len);
+}
+
 constexpr bool operator==(StringView lhs, StringView rhs) {
     if (lhs.len != rhs.len) {
         return false;

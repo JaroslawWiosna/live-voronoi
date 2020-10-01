@@ -7,6 +7,8 @@
 struct StringView {
     size_t len;
     const char *str;
+
+    constexpr bool empty() const;
 };
 
 constexpr bool operator==(StringView lhs, StringView rhs);
