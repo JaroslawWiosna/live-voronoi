@@ -11,6 +11,8 @@ struct StringView {
     constexpr bool empty() const;
     constexpr StringView remove_prefix(size_t n);
     constexpr StringView remove_suffix(size_t n);
+    constexpr bool starts_with(StringView that) const;
+    constexpr bool ends_with(StringView that) const;
 };
 
 constexpr StringView operator""_sv(const char *cstr, size_t len) {

@@ -20,6 +20,17 @@ constexpr StringView StringView::remove_suffix(size_t n) {
     return result;
 }
 
+constexpr bool StringView::starts_with(StringView that) const {
+    StringView tmp = {len, str};
+    return that == tmp.remove_prefix(that.len);
+}
+
+constexpr bool StringView::ends_with(StringView that) const {
+    StringView tmp = {len, str};
+    return that == tmp.remove_suffix(that.len);
+}
+
+
 constexpr bool operator==(StringView lhs, StringView rhs) {
     if (lhs.len != rhs.len) {
         return false;
@@ -41,3 +52,7 @@ static_assert("Foo"_sv != "Foobar"_sv);
 static_assert("Foobar"_sv != "Foo"_sv);
 static_assert("Foo"_sv == "Foobar"_sv.remove_prefix(3));
 static_assert("bar"_sv == "Foobar"_sv.remove_suffix(3));
+static_assert("Foobar"_sv.starts_with("Foo"_sv));
+static_assert(not"Foobar"_sv.starts_with("Bar"_sv));
+static_assert("Foobar"_sv.ends_with("bar"_sv));
+static_assert(not"Foobar"_sv.ends_with("foo"_sv));
