@@ -1,6 +1,7 @@
 #include <SDL.h>
 
 #include "30_string_view.cpp"
+#include "40_coord.hpp"
 #include "50_constants.hpp"
 #include "87_world.cpp"
 #include "98_test.cpp"
