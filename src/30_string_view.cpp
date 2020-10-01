@@ -2,11 +2,7 @@
 
 #include <cassert>
 
-constexpr StringView operator""_sv(const char *cstr, size_t len) {
-    return {len, cstr};
-}
-
-constexpr bool empty() const {
+constexpr bool StringView::empty() const {
     return (0 == len);
 }
 
