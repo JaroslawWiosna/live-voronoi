@@ -2,7 +2,7 @@
 #include "40_coord.hpp"
 struct Camera {
     Coord center;
-    //TODO: unhardcore Camera::zoom
+    // TODO: unhardcore Camera::zoom
     int zoom{6};
     constexpr Longitude left() const;
     constexpr Longitude right() const;
