@@ -1,4 +1,2 @@
-//TODO(#3): implement Coord
-struct Coord {
-
-};
+// TODO(#3): implement Coord
+struct Coord {};

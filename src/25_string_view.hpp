@@ -5,4 +5,5 @@ struct StringView {
     const char *str;
 };
 
-bool operator==(StringView lhs, StringView rhs);
+constexpr bool operator==(StringView lhs, StringView rhs);
+constexpr bool operator!=(StringView lhs, StringView rhs);
