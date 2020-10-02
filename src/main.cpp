@@ -28,8 +28,17 @@ int main(int argc, char *argv[]) {
                 case SDL_KEYDOWN: {
                     switch (event.key.keysym.sym) {
                         case SDLK_1:
-                        case SDLK_2: {
-                            // TBD
+                        case SDLK_2:
+                        case SDLK_3:
+                        case SDLK_4:
+                        case SDLK_5:
+                        case SDLK_6:
+                        case SDLK_7:
+                        case SDLK_8:
+                        case SDLK_9:
+                        case SDLK_0: {
+                            int option = event.key.keysym.sym - SDLK_0;
+                            printf(" [DEBUG] Pressed key: %d\n", option);
                         } break;
                         case SDLK_q: {
                             quit = !quit;
