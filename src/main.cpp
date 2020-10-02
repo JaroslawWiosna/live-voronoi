@@ -43,5 +43,7 @@ int main(int argc, char *argv[]) {
         world.render(renderer);
         SDL_RenderPresent(renderer);
     }
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
     SDL_Quit();
 }
