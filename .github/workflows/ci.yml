@@ -13,7 +13,7 @@ jobs:
       - name: build
         run: |
           make tests
-          make -B
+          make
         env:
           CC: gcc
           CXX: g++
@@ -28,7 +28,7 @@ jobs:
       - name: build
         run: |
           make tests
-          make -B
+          make
         env:
           CC: clang
           CXX: clang++
