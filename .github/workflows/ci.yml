@@ -16,3 +16,18 @@ jobs:
         env:
           CC: gcc
           CXX: g++
+          
+  build-macos-clang:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: |
+          brew install sdl2
+      - name: build
+        run: |
+          ./build.sh
+        env:
+          CC: clang
+          CXX: clang++
+          
