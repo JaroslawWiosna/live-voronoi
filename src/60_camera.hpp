@@ -18,7 +18,7 @@ struct Camera {
 };
 
 constexpr Longitude Camera::left() const {
-    return {center.longit.as_float - (zoom *0.6f) };
+    return {center.longit.as_float - (zoom * 0.6f)};
 }
 constexpr Longitude Camera::right() const {
     return {center.longit.as_float + (zoom * 0.6f)};
