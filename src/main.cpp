@@ -9,7 +9,10 @@
 #include "98_test.cpp"
 
 int main(int argc, char *argv[]) {
+#ifdef TESTS
     test();
+    exit(0);
+#endif // TESTS
     World world{};
     world.camera.center = {{51.798f}, {20.665f}};
     SDL_Window *window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
