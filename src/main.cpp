@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
                             assert(resolution >= 1 && resolution < 10);
                             need_to_render = true;
                             printf(" [DEBUG] Pressed key: %d\n", resolution);
-                            resolution *= 4;
+                            resolution = pow(resolution, 2);
                         } break;
                         case SDLK_q: {
                             quit = !quit;
