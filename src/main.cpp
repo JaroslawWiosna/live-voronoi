@@ -49,6 +49,25 @@ int main(int argc, char *argv[]) {
                         case SDLK_q: {
                             quit = !quit;
                         } break;
+                        case SDLK_LEFT:
+                        case SDLK_UP:
+                        case SDLK_DOWN:
+                        case SDLK_RIGHT: {
+                            printf(" [DEBUG] Pressed arrow key: %s\n",
+                                   SDL_GetKeyName(event.key.keysym.sym));
+                        } break;
+                        case SDLK_EQUALS: {
+                            printf(" [DEBUG] Pressed key: SDLK_EQUALS\n");
+                        } break;
+                        case SDLK_MINUS: {
+                            printf(" [DEBUG] Pressed key: SDLK_MINUS\n");
+                        } break;
+                        default: {
+                            printf(
+                                " [DEBUG] Physical %s key acting as %s key\n",
+                                SDL_GetScancodeName(event.key.keysym.scancode),
+                                SDL_GetKeyName(event.key.keysym.sym));
+                        }
                     }
                     break;
                 }
