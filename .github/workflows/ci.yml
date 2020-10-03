@@ -12,6 +12,7 @@ jobs:
           sudo apt-get install -qq g++ libsdl2-2.0 libsdl2-dev
       - name: build
         run: |
+          make tests
           make -B
         env:
           CC: gcc
@@ -26,6 +27,7 @@ jobs:
           brew install sdl2
       - name: build
         run: |
+          make tests
           make -B
         env:
           CC: clang
