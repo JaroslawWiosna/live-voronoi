@@ -6,7 +6,7 @@ LIBS=`pkg-config --libs $(PKGS) `
 all: live-voronoi
 	
 live-voronoi: $(wildcard src/*cpp) $(wildcard src/*hpp) 
-	$(CXX) $(CXXFLAGS) src/main.cpp -o live-voronoi $(LIBS) 
+	$(CXX) $(CXXFLAGS) src/99_main.cpp -o live-voronoi $(LIBS) 
 
 .PHONY: run
 run: live-voronoi
@@ -17,7 +17,7 @@ tests: live-voronoi-tests
 	./live-voronoi-tests
 	
 live-voronoi-tests: $(wildcard src/*cpp) $(wildcard src/*hpp) 
-	$(CXX) $(CXXFLAGS) -DTESTS src/main.cpp -o live-voronoi-tests $(LIBS) 
+	$(CXX) $(CXXFLAGS) -DTESTS src/99_main.cpp -o live-voronoi-tests $(LIBS) 
 
 .PHONY: format
 format: 
