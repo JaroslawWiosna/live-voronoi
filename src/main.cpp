@@ -49,12 +49,29 @@ int main(int argc, char *argv[]) {
                         case SDLK_q: {
                             quit = !quit;
                         } break;
-                        case SDLK_LEFT:
-                        case SDLK_UP:
-                        case SDLK_DOWN:
+                        case SDLK_LEFT: {
+                            printf(" [DEBUG] Pressed arrow key: %s\n",
+                                   SDL_GetKeyName(event.key.keysym.sym));
+                            world.camera.center.longit.as_float -= 0.2f;
+                            need_to_render = true;
+                        } break;
+                        case SDLK_UP: {
+                            printf(" [DEBUG] Pressed arrow key: %s\n",
+                                   SDL_GetKeyName(event.key.keysym.sym));
+                            world.camera.center.latit.as_float += 0.2f;
+                            need_to_render = true;
+                        } break;
+                        case SDLK_DOWN: {
+                            printf(" [DEBUG] Pressed arrow key: %s\n",
+                                   SDL_GetKeyName(event.key.keysym.sym));
+                            world.camera.center.latit.as_float -= 0.2f;
+                            need_to_render = true;
+                        } break;
                         case SDLK_RIGHT: {
                             printf(" [DEBUG] Pressed arrow key: %s\n",
                                    SDL_GetKeyName(event.key.keysym.sym));
+                            world.camera.center.longit.as_float += 0.2f;
+                            need_to_render = true;
                         } break;
                         case SDLK_EQUALS: {
                             printf(" [DEBUG] Pressed key: SDLK_EQUALS\n");
