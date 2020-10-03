@@ -3,7 +3,7 @@
 struct Camera {
     Coord center;
     // TODO(#13): unhardcore Camera::zoom
-    int zoom{6};
+    float zoom{10.0f};
     constexpr Longitude left() const;
     constexpr Longitude right() const;
     constexpr Latitude top() const;
@@ -18,16 +18,16 @@ struct Camera {
 };
 
 constexpr Longitude Camera::left() const {
-    return {center.longit.as_float - 6.0f};
+    return {center.longit.as_float - (zoom *0.6f) };
 }
 constexpr Longitude Camera::right() const {
-    return {center.longit.as_float + 6.0f};
+    return {center.longit.as_float + (zoom * 0.6f)};
 }
 constexpr Latitude Camera::top() const {
-    return {center.latit.as_float + 4.0f};
+    return {center.latit.as_float + (zoom * 0.4f)};
 }
 constexpr Latitude Camera::bottom() const {
-    return {center.latit.as_float - 4.0f};
+    return {center.latit.as_float - (zoom * 0.4f)};
 }
 constexpr Coord Camera::top_left() const {
     return {{top()}, {left()}};

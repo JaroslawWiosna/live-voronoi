@@ -75,9 +75,13 @@ int main(int argc, char *argv[]) {
                         } break;
                         case SDLK_EQUALS: {
                             printf(" [DEBUG] Pressed key: SDLK_EQUALS\n");
+                            world.camera.zoom -= 0.5f;
+                            need_to_render = true;
                         } break;
                         case SDLK_MINUS: {
                             printf(" [DEBUG] Pressed key: SDLK_MINUS\n");
+                            world.camera.zoom += 0.5f;
+                            need_to_render = true;
                         } break;
                         default: {
                             printf(
