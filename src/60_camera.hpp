@@ -2,6 +2,8 @@
 #include "40_coord.hpp"
 struct Camera {
     Coord center;
+    // TODO(#18): zoom level should correspond to OpenStreetMap zoom
+    // https://wiki.openstreetmap.org/wiki/Zoom_levels
     float zoom{10.0f};
     constexpr Longitude left() const;
     constexpr Longitude right() const;
