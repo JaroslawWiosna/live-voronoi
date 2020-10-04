@@ -7,4 +7,5 @@ struct World {
     void update(float dt, int resolution);
     void update(float dt, int resolution, SDL_Renderer *renderer);
     void render(SDL_Renderer *renderer);
+    void render_names(SDL_Renderer *renderer);
 };

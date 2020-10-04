@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <SDL_ttf.h>
 
 #include "30_string_view.cpp"
 #include "40_coord.hpp"
@@ -21,6 +22,8 @@ int main(int argc, char *argv[]) {
     SDL_Renderer *renderer = SDL_CreateRenderer(
         window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    TTF_Init();
 
     int resolution{1};
     bool need_to_render{};
@@ -97,6 +100,7 @@ int main(int argc, char *argv[]) {
         if (need_to_render) {
             world.update(UPDATE_TIME, resolution, renderer);
             // world.render(renderer);
+            world.render_names(renderer);
             SDL_RenderPresent(renderer);
             need_to_render = false;
         }
