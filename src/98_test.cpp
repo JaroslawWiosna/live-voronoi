@@ -1,4 +1,8 @@
 #include "25_string_view.hpp"
+// TODO(#25): Use EXPECT_EQ, EXPECT_TRUE, EXPECT_FALSE, ASSERT_EQ or more from
+// https://github.com/google/googletest/blob/10ade8473b698a8fe14ddb518c2abd228669657a/googletest/docs/primer.md
+
+// TODO: Executing a test binary should print a report "X OK, Y FAILED"
 void test() {
     {
         auto sv1 = "Foo"_sv;
