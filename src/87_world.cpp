@@ -83,3 +83,43 @@ void World::render(SDL_Renderer *renderer) {
     assert(!"For now rendering is inside World::Update");
     return;
 }
+
+void World::render_names(SDL_Renderer *renderer) {
+    // TODO(#20): unhardcode font_filepath
+    // Consider using `fc-list | grep -i mono` and taking the first one
+    const char *font_filepath = "/usr/share/fonts/gnu-free/FreeMonoOblique.ttf";
+    TTF_Font *font = TTF_OpenFont(font_filepath, 48);
+    if (nullptr == font) {
+        // TODO(#21): Errors should be printed to stderr
+        printf("Skipping render_names, because could not load font\n");
+        printf("TTF_OpenFont: %s\n", TTF_GetError());
+        exit(1);
+        return;
+    }
+
+    // TODO(#22): We need a namespace with the most popular colors
+    const SDL_Color white = {255, 255, 255, 255};
+
+    const int BUFFER_CAPACITY{256};
+    char buffer[BUFFER_CAPACITY] = {};
+    for (int i{}; i < locations_count; ++i) {
+        printf(" [DEBUG] %s:%d Name: %.*s\n", __FILE__, __LINE__,
+               locations[i].name.len, locations[i].name.str);
+        memset(buffer, '\0', BUFFER_CAPACITY);
+        // TODO(#23): Polish letters are not rendered correctly
+        sprintf(buffer, "%.*s", locations[i].name.len, locations[i].name.str);
+        SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, buffer, white);
+        SDL_Texture *message =
+            SDL_CreateTextureFromSurface(renderer, surfacemessage);
+        SDL_Rect message_rect;
+        // TODO(#24): Cities names should be rendered near their locations
+        message_rect.x = 0;
+        message_rect.y = 0 + (i * 60);
+        message_rect.w = 20 * locations[i].name.len;
+        message_rect.h = 50;
+        SDL_RenderCopy(renderer, message, nullptr, &message_rect);
+        SDL_DestroyTexture(message);
+        SDL_FreeSurface(surfacemessage);
+    }
+    return;
+}
