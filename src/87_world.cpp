@@ -106,7 +106,7 @@ void World::render_names(SDL_Renderer *renderer) {
         printf(" [DEBUG] %s:%d Name: %.*s\n", __FILE__, __LINE__,
                locations[i].name.len, locations[i].name.str);
         memset(buffer, '\0', BUFFER_CAPACITY);
-        // TODO: Polish letters are not rendered correctly
+        // TODO(#23): Polish letters are not rendered correctly
         sprintf(buffer, "%.*s", locations[i].name.len, locations[i].name.str);
         SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, buffer, white);
         SDL_Texture *message =
