@@ -25,8 +25,8 @@ int main(int argc, char *argv[]) {
 
     TTF_Init();
 
-    int resolution{1};
-    bool need_to_render{};
+    int resolution{100};
+    bool need_to_render{true};
     bool quit{};
     while (not quit) {
         SDL_Event event;
