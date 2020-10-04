@@ -1,4 +1,4 @@
-PKGS=sdl2
+PKGS=sdl2 SDL2_ttf
 CXXFLAGS=$(CFLAGS) -std=c++17 -O0 -ggdb `pkg-config --cflags $(PKGS)`
 LIBS=`pkg-config --libs $(PKGS) `
 
