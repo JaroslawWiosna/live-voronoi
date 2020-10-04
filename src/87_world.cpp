@@ -97,7 +97,7 @@ void World::render_names(SDL_Renderer *renderer) {
         return;
     }
 
-    // TODO: We need a namespace with the most popular colors
+    // TODO(#22): We need a namespace with the most popular colors
     const SDL_Color white = {255, 255, 255, 255};
 
     const int BUFFER_CAPACITY{256};
