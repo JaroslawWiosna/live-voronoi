@@ -90,7 +90,7 @@ void World::render_names(SDL_Renderer *renderer) {
     const char *font_filepath = "/usr/share/fonts/gnu-free/FreeMonoOblique.ttf";
     TTF_Font *font = TTF_OpenFont(font_filepath, 48);
     if (nullptr == font) {
-        // TODO: Errors should be printed to stderr
+        // TODO(#21): Errors should be printed to stderr
         printf("Skipping render_names, because could not load font\n");
         printf("TTF_OpenFont: %s\n", TTF_GetError());
         exit(1);
