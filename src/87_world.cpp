@@ -112,7 +112,7 @@ void World::render_names(SDL_Renderer *renderer) {
         SDL_Texture *message =
             SDL_CreateTextureFromSurface(renderer, surfacemessage);
         SDL_Rect message_rect;
-        // TODO: Cities names should be rendered near their locations
+        // TODO(#24): Cities names should be rendered near their locations
         message_rect.x = 0;
         message_rect.y = 0 + (i * 60);
         message_rect.w = 20 * locations[i].name.len;
