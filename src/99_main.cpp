@@ -5,6 +5,7 @@
 #include "40_coord.hpp"
 #include "50_constants.hpp"
 #include "60_camera.hpp"
+#include "65_args.hpp"
 #include "87_world.cpp"
 #include "97_database.cpp"
 #include "98_test.cpp"
@@ -14,6 +15,9 @@ int main(int argc, char *argv[]) {
     test();
     exit(0);
 #endif // TESTS
+
+    args.parse(argc, argv);
+
     World world{};
     world.camera.center = {{51.798f}, {20.665f}};
     SDL_Window *window = SDL_CreateWindow(argv[0], 0, 0, SCREEN_WIDTH,
