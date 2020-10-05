@@ -1,4 +1,13 @@
 #pragma once
+
+template<typename T>
+struct vec2 {
+    T x;
+    T y;
+};
+
+using vec2i = vec2<int>;
+
 #include "40_coord.hpp"
 struct Camera {
     Coord center;
@@ -16,6 +25,7 @@ struct Camera {
     constexpr float dx() const;
     constexpr float dy() const;
     constexpr Coord at(int x, int y) const;
+    vec2i coord_to_xy(Coord coord);
 };
 
 constexpr Longitude Camera::left() const {
@@ -51,4 +61,8 @@ constexpr float Camera::dy() const {
 
 constexpr Coord Camera::at(int x, int y) const {
     return {{top().as_float - (dy() * y)}, {left().as_float + (dx() * x)}};
+}
+
+vec2i Camera::coord_to_xy(Coord coord) {
+    return {};
 }
