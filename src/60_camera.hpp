@@ -52,9 +52,21 @@ constexpr float Camera::dy() const {
 }
 
 constexpr Coord Camera::at(int x, int y) const {
-    return {{top().as_float - (dy() * y)}, {left().as_float + (dx() * x)}};
+    return {{((top().as_float - bottom().as_float) * (float)y / SCREEN_HEIGHT) +
+             bottom().as_float},
+            {((right().as_float - left().as_float) * (float)x / SCREEN_WIDTH) +
+             left().as_float}};
 }
 
 vec2i Camera::coord_to_xy(Coord coord) {
-    return {};
+    printf("For %.*s \n", coord.name.len, coord.name.str);
+    printf("(coord.longit.as_float - left().as_float) / dx()");
+    printf(" %f\n", (coord.longit.as_float - left().as_float) / dx());
+    printf("(top().as_float - coord.latit.as_float) / dy()");
+    printf(" %f\n", (top().as_float - coord.latit.as_float) / dy());
+    printf("\n");
+    return {(coord.longit.as_float - left().as_float) /
+                (right().as_float - left().as_float) * SCREEN_WIDTH,
+            (top().as_float - coord.latit.as_float) /
+                (top().as_float - bottom().as_float) * SCREEN_HEIGHT};
 }
