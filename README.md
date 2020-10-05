@@ -1,4 +1,5 @@
 [![CI status](https://github.com/JaroslawWiosna/live-voronoi/workflows/CI/badge.svg)](https://github.com/JaroslawWiosna/live-voronoi/actions)
+![Lines of code](https://img.shields.io/tokei/lines/github/JaroslawWiosna/live-voronoi)
 
 # live-voronoi
 SDL app: 2D voronoish map of user defined places 
