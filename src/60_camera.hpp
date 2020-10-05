@@ -51,6 +51,7 @@ constexpr float Camera::dy() const {
     return (top().as_float - bottom().as_float) / SCREEN_HEIGHT;
 }
 
+// TODO(#34): colors of clusters are not related to the actual coordinates
 constexpr Coord Camera::at(int x, int y) const {
     return {{((top().as_float - bottom().as_float) * (float)y / SCREEN_HEIGHT) +
              bottom().as_float},
