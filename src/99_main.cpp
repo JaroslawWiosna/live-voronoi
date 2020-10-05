@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
     TTF_Init();
 
-    int resolution{2*2*2*3*5};
+    int resolution{2 * 2 * 2 * 3 * 5};
     bool need_to_render{true};
     bool quit{};
     while (not quit) {
@@ -47,7 +47,9 @@ int main(int argc, char *argv[]) {
                             assert(resolution >= 1 && resolution < 10);
                             need_to_render = true;
                             printf(" [DEBUG] Pressed key: %d\n", resolution);
-                            int resolution_array[] = {2, 2*2, 2*2*2, 2*2*2*3, 2*2*2*3*5}; 
+                            int resolution_array[] = {2, 2 * 2, 2 * 2 * 2,
+                                                      2 * 2 * 2 * 3,
+                                                      2 * 2 * 2 * 3 * 5};
                             resolution = resolution_array[resolution - 1];
                         } break;
                         case SDLK_q: {

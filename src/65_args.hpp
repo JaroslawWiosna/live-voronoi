@@ -1,7 +1,7 @@
 #pragma once
 
 struct Args {
-    char * font_filepath{};
+    char *font_filepath{};
     void parse(int argc, char *argv[]) {
         for (int i{}; i < argc; ++i) {
             //            printf("%d. %s\n", i, argv[i]);
@@ -13,5 +13,3 @@ struct Args {
 };
 
 Args args{};
-
-
