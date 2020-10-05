@@ -1,16 +1,17 @@
 #include "75_world.hpp"
-Coord locations[] = {{{53.12764f}, {23.15649f}, "Białystok"_sv},
-                     {{54.34757f}, {18.64531f}, "Gdańsk"_sv},
-//                     {{50.25983f}, {19.02195f}, "Katowice"_sv},
-//                     {{50.06199f}, {19.93959f}, "Kraków"_sv},
-//                     {{52.40788f}, {16.93337}, "Poznań"_sv},
-                     {{50.67034f}, {17.92026}, "Opole"_sv},
-//                     {{51.93970f}, {15.50500}, "Zielona Góra"_sv},
-//                     {{53.77610f}, {20.47750}, "Olsztyn"_sv},
-//                     {{54.15860f}, {19.39550}, "Elbląg"_sv},
-                     {{49.29669f}, {19.94834}, "Zakopane"_sv},
-//                     {{49.74894f}, {18.63359}, "Cieszyn"_sv},
-                     {{51.76865f}, {19.45723f}, "Łódź"_sv}};
+Coord locations[] = {
+    {{53.12764f}, {23.15649f}, "Białystok"_sv},
+    {{54.34757f}, {18.64531f}, "Gdańsk"_sv},
+    //                     {{50.25983f}, {19.02195f}, "Katowice"_sv},
+    //                     {{50.06199f}, {19.93959f}, "Kraków"_sv},
+    //                     {{52.40788f}, {16.93337}, "Poznań"_sv},
+    {{50.67034f}, {17.92026}, "Opole"_sv},
+    //                     {{51.93970f}, {15.50500}, "Zielona Góra"_sv},
+    //                     {{53.77610f}, {20.47750}, "Olsztyn"_sv},
+    //                     {{54.15860f}, {19.39550}, "Elbląg"_sv},
+    {{49.29669f}, {19.94834}, "Zakopane"_sv},
+    //                     {{49.74894f}, {18.63359}, "Cieszyn"_sv},
+    {{51.76865f}, {19.45723f}, "Łódź"_sv}};
 const size_t locations_count = sizeof(locations) / sizeof(locations[0]);
 
 SDL_Color colors[] = {
