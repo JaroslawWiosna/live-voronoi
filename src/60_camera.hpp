@@ -66,8 +66,8 @@ vec2i Camera::coord_to_xy(Coord coord) {
     printf("(top().as_float - coord.latit.as_float) / dy()");
     printf(" %f\n", (top().as_float - coord.latit.as_float) / dy());
     printf("\n");
-    return {(coord.longit.as_float - left().as_float) /
-                (right().as_float - left().as_float) * SCREEN_WIDTH,
-            (top().as_float - coord.latit.as_float) /
-                (top().as_float - bottom().as_float) * SCREEN_HEIGHT};
+    return {static_cast<int>((coord.longit.as_float - left().as_float) /
+                (right().as_float - left().as_float) * SCREEN_WIDTH),
+            static_cast<int>((top().as_float - coord.latit.as_float) /
+                (top().as_float - bottom().as_float) * SCREEN_HEIGHT)};
 }
