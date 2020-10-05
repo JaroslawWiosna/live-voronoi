@@ -10,13 +10,33 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -qq g++ libsdl2-2.0 libsdl2-dev libsdl2-ttf-dev
-      - name: build
+      - name: build and run tests
         run: |
           make tests
-          make
+      - name: build
+        run: |
+          make -B
         env:
           CC: gcc
           CXX: g++
+          
+  build-linux-clang:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -qq g++ libsdl2-2.0 libsdl2-dev libsdl2-ttf-dev
+      - name: build and run tests
+        run: |
+          make tests
+      - name: build
+        run: |
+          make -B
+        env:
+          CC: clang
+          CXX: clang++
           
   build-macos-clang:
     runs-on: macOS-latest
@@ -25,10 +45,12 @@ jobs:
       - name: install dependencies
         run: |
           brew install sdl2 sdl2_ttf
-      - name: build
+      - name: build and run tests
         run: |
           make tests
-          make
+      - name: build
+        run: |
+          make -B
         env:
           CC: clang
           CXX: clang++
