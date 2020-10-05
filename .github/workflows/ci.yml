@@ -18,6 +18,22 @@ jobs:
           CC: gcc
           CXX: g++
           
+  build-linux-clang:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -qq g++ libsdl2-2.0 libsdl2-dev libsdl2-ttf-dev
+      - name: build
+        run: |
+          make tests
+          make
+        env:
+          CC: clang
+          CXX: clang++
+          
   build-macos-clang:
     runs-on: macOS-latest
     steps:
