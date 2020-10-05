@@ -88,7 +88,9 @@ void World::render_names(SDL_Renderer *renderer) {
     // TODO(#20): unhardcode font_filepath
     // Consider using `fc-list | grep -i mono` and taking the first one
     const char *font_filepath = "/usr/share/fonts/gnu-free/FreeMonoOblique.ttf";
-    TTF_Font *font = TTF_OpenFont(font_filepath, 48);
+    TTF_Font *font = TTF_OpenFont(
+        args.font_filepath ? args.font_filepath : font_filepath,
+        48);
     if (nullptr == font) {
         // TODO(#21): Errors should be printed to stderr
         printf("Skipping render_names, because could not load font\n");
