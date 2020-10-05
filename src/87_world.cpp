@@ -85,8 +85,7 @@ void World::render(SDL_Renderer *renderer) {
 }
 
 void World::render_names(SDL_Renderer *renderer) {
-    // TODO(#20): unhardcode font_filepath
-    // Consider using `fc-list | grep -i mono` and taking the first one
+    // TODO(#28): Consider using `fc-list | grep -i mono` and taking the first ttf
     const char *font_filepath = "/usr/share/fonts/gnu-free/FreeMonoOblique.ttf";
     TTF_Font *font = TTF_OpenFont(
         args.font_filepath ? args.font_filepath : font_filepath,
