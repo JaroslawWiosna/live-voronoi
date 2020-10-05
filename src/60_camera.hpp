@@ -1,14 +1,6 @@
 #pragma once
-
-template<typename T>
-struct vec2 {
-    T x;
-    T y;
-};
-
-using vec2i = vec2<int>;
-
 #include "40_coord.hpp"
+#include "59_vec.hpp"
 struct Camera {
     Coord center;
     // TODO(#18): zoom level should correspond to OpenStreetMap zoom
