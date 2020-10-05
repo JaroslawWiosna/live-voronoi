@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
     TTF_Init();
 
-    int resolution{100};
+    int resolution{2*2*2*3*5};
     bool need_to_render{true};
     bool quit{};
     while (not quit) {
@@ -42,16 +42,13 @@ int main(int argc, char *argv[]) {
                         case SDLK_2:
                         case SDLK_3:
                         case SDLK_4:
-                        case SDLK_5:
-                        case SDLK_6:
-                        case SDLK_7:
-                        case SDLK_8:
-                        case SDLK_9: {
+                        case SDLK_5: {
                             resolution = event.key.keysym.sym - SDLK_0;
                             assert(resolution >= 1 && resolution < 10);
                             need_to_render = true;
                             printf(" [DEBUG] Pressed key: %d\n", resolution);
-                            resolution = pow(resolution, 2);
+                            int resolution_array[] = {2, 2*2, 2*2*2, 2*2*2*3, 2*2*2*3*5}; 
+                            resolution = resolution_array[resolution - 1];
                         } break;
                         case SDLK_q: {
                             quit = !quit;
