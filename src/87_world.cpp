@@ -1,16 +1,17 @@
 #include "75_world.hpp"
-Coord locations[] = {{{53.12764f}, {23.15649f}, "Białystok"_sv},
-                     {{54.34757f}, {18.64531f}, "Gdańsk"_sv},
-                     {{50.25983f}, {19.02195f}, "Katowice"_sv},
-                     {{50.06199f}, {19.93959f}, "Kraków"_sv},
-                     {{52.40788f}, {16.93337}, "Poznań"_sv},
-                     {{50.67034f}, {17.92026}, "Opole"_sv},
-                     {{51.93970f}, {15.50500}, "Zielona Góra"_sv},
-                     {{53.77610f}, {20.47750}, "Olsztyn"_sv},
-                     {{54.15860f}, {19.39550}, "Elbląg"_sv},
-                     {{49.29669f}, {19.94834}, "Zakopane"_sv},
-                     {{49.74894f}, {18.63359}, "Cieszyn"_sv},
-                     {{51.76865f}, {19.45723f}, "Łódź"_sv}};
+Coord locations[] = {
+    {{53.12764f}, {23.15649f}, "Białystok"_sv},
+    {{54.34757f}, {18.64531f}, "Gdańsk"_sv},
+    //                     {{50.25983f}, {19.02195f}, "Katowice"_sv},
+    //                     {{50.06199f}, {19.93959f}, "Kraków"_sv},
+    //                     {{52.40788f}, {16.93337}, "Poznań"_sv},
+    {{50.67034f}, {17.92026}, "Opole"_sv},
+    //                     {{51.93970f}, {15.50500}, "Zielona Góra"_sv},
+    //                     {{53.77610f}, {20.47750}, "Olsztyn"_sv},
+    //                     {{54.15860f}, {19.39550}, "Elbląg"_sv},
+    {{49.29669f}, {19.94834}, "Zakopane"_sv},
+    //                     {{49.74894f}, {18.63359}, "Cieszyn"_sv},
+    {{51.76865f}, {19.45723f}, "Łódź"_sv}};
 const size_t locations_count = sizeof(locations) / sizeof(locations[0]);
 
 SDL_Color colors[] = {
@@ -63,6 +64,7 @@ void World::update(float dt, int resolution, SDL_Renderer *renderer) {
         for (int x{}; x < resolution; ++x) {
             auto tmp = camera.at(x * (SCREEN_HEIGHT / resolution),
                                  y * (SCREEN_HEIGHT / resolution));
+            printf("%f %f\n", tmp.longit.as_float, tmp.latit.as_float);
             auto idx = closest_location(tmp);
             if (idx == -1)
                 continue;
@@ -85,11 +87,11 @@ void World::render(SDL_Renderer *renderer) {
 }
 
 void World::render_names(SDL_Renderer *renderer) {
-    // TODO(#28): Consider using `fc-list | grep -i mono` and taking the first ttf
+    // TODO(#28): Consider using `fc-list | grep -i mono` and taking the first
+    // ttf
     const char *font_filepath = "/usr/share/fonts/gnu-free/FreeMonoOblique.ttf";
     TTF_Font *font = TTF_OpenFont(
-        args.font_filepath ? args.font_filepath : font_filepath,
-        48);
+        args.font_filepath ? args.font_filepath : font_filepath, 48);
     if (nullptr == font) {
         // TODO(#21): Errors should be printed to stderr
         printf("Skipping render_names, because could not load font\n");
@@ -114,8 +116,9 @@ void World::render_names(SDL_Renderer *renderer) {
             SDL_CreateTextureFromSurface(renderer, surfacemessage);
         SDL_Rect message_rect;
         // TODO(#24): Cities names should be rendered near their locations
-        message_rect.x = 0;
-        message_rect.y = 0 + (i * 60);
+        auto pos = camera.coord_to_xy(locations[i]);
+        message_rect.x = pos.x;
+        message_rect.y = pos.y;
         message_rect.w = 20 * locations[i].name.len;
         message_rect.h = 50;
         SDL_RenderCopy(renderer, message, nullptr, &message_rect);

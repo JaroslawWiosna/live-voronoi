@@ -1,5 +1,6 @@
 #pragma once
 #include "40_coord.hpp"
+#include "59_vec.hpp"
 struct Camera {
     Coord center;
     // TODO(#18): zoom level should correspond to OpenStreetMap zoom
@@ -16,6 +17,7 @@ struct Camera {
     constexpr float dx() const;
     constexpr float dy() const;
     constexpr Coord at(int x, int y) const;
+    vec2i coord_to_xy(Coord coord);
 };
 
 constexpr Longitude Camera::left() const {
@@ -49,6 +51,23 @@ constexpr float Camera::dy() const {
     return (top().as_float - bottom().as_float) / SCREEN_HEIGHT;
 }
 
+// TODO(#34): colors of clusters are not related to the actual coordinates
 constexpr Coord Camera::at(int x, int y) const {
-    return {{top().as_float - (dy() * y)}, {left().as_float + (dx() * x)}};
+    return {{((top().as_float - bottom().as_float) * (float)y / SCREEN_HEIGHT) +
+             bottom().as_float},
+            {((right().as_float - left().as_float) * (float)x / SCREEN_WIDTH) +
+             left().as_float}};
+}
+
+vec2i Camera::coord_to_xy(Coord coord) {
+    printf("For %.*s \n", coord.name.len, coord.name.str);
+    printf("(coord.longit.as_float - left().as_float) / dx()");
+    printf(" %f\n", (coord.longit.as_float - left().as_float) / dx());
+    printf("(top().as_float - coord.latit.as_float) / dy()");
+    printf(" %f\n", (top().as_float - coord.latit.as_float) / dy());
+    printf("\n");
+    return {static_cast<int>((coord.longit.as_float - left().as_float) /
+                (right().as_float - left().as_float) * SCREEN_WIDTH),
+            static_cast<int>((top().as_float - coord.latit.as_float) /
+                (top().as_float - bottom().as_float) * SCREEN_HEIGHT)};
 }
